@@ -36,36 +36,19 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
             ),
-            // Animated Dropdown Menu
+            // Menu Icon for Sidebar
             Positioned(
               right: 16,
               top: 0,
               bottom: 0,
-              child: PopupMenuButton<String>(
+              child: IconButton(
                 icon: const Icon(
                   Icons.menu,
                   color: Colors.black,
                   size: 25,
                 ),
-                offset: const Offset(0, 40), // Adjusts dropdown position
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                color: Colors.white, // White background for dropdown
-                elevation: 8, // Shadow for dropdown
-                itemBuilder: (BuildContext context) {
-                  return <PopupMenuEntry<String>>[
-                    _buildAnimatedMenuItem('Главная', 'Home'),
-                    _buildAnimatedMenuItem('Банкетные залы', 'BanquetHalls'),
-                    _buildAnimatedMenuItem('О нас', 'About'),
-                    _buildAnimatedMenuItem('Контакты', 'Contacts'),
-                    _buildAddOrganizationMenuItem('Добавить организацию', 'AddOrganization'),
-                  ];
-                },
-                onSelected: (String value) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Selected: $value')),
-                  );
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
                 },
               ),
             ),
@@ -75,61 +58,79 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  PopupMenuItem<String> _buildAnimatedMenuItem(String title, String value) {
-    return PopupMenuItem<String>(
-      value: value,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        child: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 16,
-            color: Colors.black,
-            fontWeight: FontWeight.w400,
+  @override
+  Size get preferredSize => const Size.fromHeight(57);
+}
+
+// Drawer widget for sidebar navigation
+class Sidebar extends StatelessWidget {
+  const Sidebar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: Colors.white, // Set Drawer background to white
+      child: SafeArea(
+        child: Container(
+          color: Colors.white, // Keep Container color white for consistency
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              _buildMenuItem(context, 'Главная', 'Home'),
+              _buildMenuItem(context, 'Банкетные залы', 'BanquetHalls'),
+              _buildMenuItem(context, 'О нас', 'About'),
+              _buildMenuItem(context, 'Контакты', 'Contacts'),
+              const SizedBox(height: 16),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ElevatedButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Selected: AddOrganization')),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFFFA500),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Text(
+                    'Добавить организацию',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
-  PopupMenuItem<String> _buildAddOrganizationMenuItem(String title, String value) {
-    return PopupMenuItem<String>(
-      value: value,
-      child: Column(
-        children: [
-          const SizedBox(height: 16), // gap-4 equivalent
-          SizedBox(
-            width: double.infinity, // Make button fill width
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFFFA500), // bg-[#FFA500]
-                foregroundColor: Colors.white, // text-white
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12), // px-6 py-3
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10), // rounded-lg
-                ),
-                elevation: 0,
-              ),
-              child: AnimatedScale(
-                scale: 1.0,
-                duration: const Duration(milliseconds: 100),
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 16, // text-xl
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+  Widget _buildMenuItem(BuildContext context, String title, String value) {
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      title: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 16,
+          color: Colors.black,
+          fontWeight: FontWeight.w400,
+        ),
       ),
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Selected: $value')),
+        );
+        Navigator.pop(context); // Close the drawer
+      },
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(57);
 }

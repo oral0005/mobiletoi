@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobiletoi/widgets/contact.dart';
 import 'package:mobiletoi/widgets/footer.dart';
-import 'package:mobiletoi/widgets/step.dart'; // Add this import
+import 'package:mobiletoi/widgets/step.dart';
 import '../widgets/header.dart';
 import '../widgets/search.dart';
 import '../widgets/carousel.dart';
@@ -13,6 +13,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Header(),
+      endDrawer: const Sidebar(), // Add the Sidebar as drawer
       backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
