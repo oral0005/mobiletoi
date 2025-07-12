@@ -15,6 +15,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         primarySwatch: Colors.blue,
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Color.fromARGB(255, 255, 255, 255), // Set background color globally
+          selectedItemColor: Color(0xFFFFA500), // Match selected item color
+          unselectedItemColor: Colors.black54, // Ensure visibility
+        ),
         textTheme: TextTheme(
           displayLarge: TextStyle(
             fontFamily: 'Inter',
@@ -93,9 +98,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const Home(), // Changed to Home page as the initial screen
+      home: const Home(), // Home widget as the initial screen
     );
   }
 }
-
-// Removed MyHomePage class since it's no longer the initial screen

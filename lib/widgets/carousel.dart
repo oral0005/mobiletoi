@@ -39,14 +39,14 @@ class Carousel extends StatelessWidget {
                   child: Card(
                     elevation: 0, // Removed shadow
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(20),
                     ),
                     child: Container(
                       width: 255,
                       child: Stack(
                         children: [
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(20),
                             child: Image(
                               image: AssetImage(item['image']!),
                               height: 345,

@@ -36,20 +36,20 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
             ),
-            // Menu Icon for Sidebar
+            // Custom Burger Icon for Sidebar
             Positioned(
-              right: 16,
+              right: 21,
               top: 0,
               bottom: 0,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.menu,
-                  color: Colors.black,
-                  size: 25,
-                ),
-                onPressed: () {
+              child: GestureDetector(
+                onTap: () {
                   Scaffold.of(context).openEndDrawer();
                 },
+                child: Image.asset(
+                  'assets/burger.png',
+                  width: 25,
+                  height: 25,
+                ),
               ),
             ),
           ],

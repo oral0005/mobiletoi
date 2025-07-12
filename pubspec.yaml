@@ -26,6 +26,7 @@ flutter:
     - assets/toihana.png
     - assets/google_play.png
     - assets/app_store.png
+    - assets/burger.png
     
     
   fonts:
