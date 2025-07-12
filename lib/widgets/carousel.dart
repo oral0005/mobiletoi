@@ -62,8 +62,8 @@ class Carousel extends StatelessWidget {
                               item['title']!,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                fontSize: 24, // Increased font size
-                                fontWeight: FontWeight.w500,
+                                fontSize: 30, // Increased font size
+                                fontWeight: FontWeight.w700,
                                 color: Colors.white,
                               ),
                             ),

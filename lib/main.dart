@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobiletoi/widgets/header.dart'; // Adjust path as needed
 import 'package:mobiletoi/pages/home.dart'; // Import the Home widget
 
 void main() {

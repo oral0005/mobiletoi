@@ -24,6 +24,10 @@ flutter:
     - assets/cafe.png
     - assets/restaurant.png
     - assets/toihana.png
+    - assets/google_play.png
+    - assets/app_store.png
+    
+    
   fonts:
     - family: Inter
       fonts:

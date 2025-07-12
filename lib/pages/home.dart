@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/header.dart'; // Импорт вашего Header
+import 'package:mobiletoi/widgets/contact.dart';
+import 'package:mobiletoi/widgets/footer.dart';
+import 'package:mobiletoi/widgets/step.dart'; // Add this import
+import '../widgets/header.dart';
 import '../widgets/search.dart';
 import '../widgets/carousel.dart';
 
@@ -25,7 +28,7 @@ class Home extends StatelessWidget {
                 Positioned.fill(
                   child: Container(
                     alignment: Alignment.topCenter,
-                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 0), // отступ сверху
+                    padding: const EdgeInsets.fromLTRB(16, 20, 16, 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: const [
@@ -79,30 +82,28 @@ class Home extends StatelessWidget {
             const SizedBox(height: 20),
             const SearchSection(),
             const SizedBox(height: 20),
-            // "Как это работает" section integrated directly
+            // "Как это работает" section
             Container(
               padding: const EdgeInsets.all(30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // "Как это работает" button
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF6E9D1), // Light beige background
+                      color: const Color(0xFFF6E9D1),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Text(
                       'КАК ЭТО РАБОТАЕТ',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Color(0xFFFFA500), // Orange text
+                        color: Color(0xFFFFA500),
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  // Title
                   const Text(
                     'Как найти тойxану\nв 3 шага',
                     textAlign: TextAlign.center,
@@ -114,21 +115,21 @@ class Home extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   // Step 1
-                  _buildStep(
+                  StepWidget(
                     icon: Icons.location_on,
                     title: 'Выберите город и дату',
                     subtitle: 'Укажите, где и когда нужен зал',
                   ),
-                  const SizedBox(height: 30), // Increased padding between icons
+                  const SizedBox(height: 30),
                   // Step 2
-                  _buildStep(
+                  StepWidget(
                     icon: Icons.business,
                     title: 'Найдите подходящий зал',
                     subtitle: 'Сравните предложения по цене, вместимости и услугам',
                   ),
-                  const SizedBox(height: 30), // Increased padding between icons
+                  const SizedBox(height: 30),
                   // Step 3
-                  _buildStep(
+                  StepWidget(
                     icon: Icons.phone,
                     title: 'Забронируйте онлайн',
                     subtitle: 'Свяжитесь напрямую или оставьте заявку',
@@ -136,8 +137,8 @@ class Home extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 20), // Spacing before the new image
-            // Добавляем content2.png
+            const SizedBox(height: 20),
+            // content2.png
             const Image(
               image: AssetImage('assets/content2.png'),
               fit: BoxFit.cover,
@@ -148,24 +149,22 @@ class Home extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // "Как это работает" button
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF6E9D1), // Light beige background
+                      color: const Color(0xFFF6E9D1),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Text(
                       'ПОЧЕМУ ВЫБИРАЮТ НАС?',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Color(0xFFFFA500), // Orange text
+                        color: Color(0xFFFFA500),
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  // Title
                   const Text(
                     'Мы предлагаем лучшие условия ',
                     textAlign: TextAlign.center,
@@ -177,28 +176,28 @@ class Home extends StatelessWidget {
                   ),
                   const SizedBox(height: 30),
                   // Step 1
-                  _buildStep(
+                  StepWidget(
                     icon: Icons.attach_money,
                     title: 'Ценовая политика',
                     subtitle: 'Подходит для любого бюджета, постоянным клиентам — скидки и бонусы.',
                   ),
-                  const SizedBox(height: 16), // Increased padding between icons
+                  const SizedBox(height: 16),
                   // Step 2
-                  _buildStep(
+                  StepWidget(
                     icon: Icons.watch,
                     title: 'Быстрое бронирование',
                     subtitle: 'Бронирование банкетного зала всего за 5 минут.',
                   ),
-                  const SizedBox(height: 30), // Increased padding between icons
+                  const SizedBox(height: 30),
                   // Step 3
-                  _buildStep(
+                  StepWidget(
                     icon: Icons.business,
                     title: 'Свобода выбора',
                     subtitle: 'Здесь собраны автомобили на любой вкус и бюджет от наших партнеров',
                   ),
-                  const SizedBox(height: 30), // Increased padding between icons
+                  const SizedBox(height: 30),
                   // Step 4
-                  _buildStep(
+                  StepWidget(
                     icon: Icons.chat,
                     title: 'Техническая поддержка',
                     subtitle: 'Есть вопрос? Обращайтесь в службу поддержки ToiBastar c 08:00 до 20:00, если у вас возникнут проблемы.',
@@ -206,53 +205,13 @@ class Home extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 20), // Spacing before the carousel
+            const SizedBox(height: 20),
             Carousel(),
+            ContactSection(),
+            FooterSection(),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildStep({required IconData icon, required String title, required String subtitle}) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Icon with background
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: const Color(0xFFF6E9D1), // Light beige background
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Icon(icon, size: 40, color: const Color(0xFFFFA500)), // Orange icon
-        ),
-        const SizedBox(width: 20),
-        // Text (title and subtitle)
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                subtitle,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Color(0xFF6B4E31), // Dark brown text
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
