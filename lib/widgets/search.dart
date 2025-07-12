@@ -54,7 +54,7 @@ class _SearchSectionState extends State<SearchSection> {
                   padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12), // px-10 py-3
                   decoration: BoxDecoration(
                     color: const Color(0xE6FFFFFF), // bg-white/90
-                    borderRadius: BorderRadius.circular(8), // rounded-lg
+                    borderRadius: BorderRadius.circular(10), // rounded-lg
                     border: Border.all(
                       color: const Color(0xFFFFA500), // text-gray-500 for border
                       width: 1,
@@ -102,11 +102,11 @@ class _SearchSectionState extends State<SearchSection> {
             margin: const EdgeInsets.only(top: 4), // mt-1
             decoration: BoxDecoration(
               color: const Color(0xE6FFFFFF), // bg-white/90
-              borderRadius: BorderRadius.circular(8), // rounded-lg
+              borderRadius: BorderRadius.circular(10), // rounded-lg
               boxShadow: const [
                 BoxShadow(
                   color: Colors.black12,
-                  blurRadius: 8,
+                  blurRadius: 10,
                   offset: Offset(0, 2),
                 ),
               ],
@@ -144,7 +144,7 @@ class _SearchSectionState extends State<SearchSection> {
                 foregroundColor: Colors.white, // text-white
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12), // px-6 py-3
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8), // rounded-lg
+                  borderRadius: BorderRadius.circular(10), // rounded-lg
                 ),
                 elevation: 0,
               ),

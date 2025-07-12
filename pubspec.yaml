@@ -21,6 +21,9 @@ flutter:
     - assets/ToiBastar_logo.png
     - assets/content1.png
     - assets/content2.png
+    - assets/cafe.png
+    - assets/restaurant.png
+    - assets/toihana.png
   fonts:
     - family: Inter
       fonts:

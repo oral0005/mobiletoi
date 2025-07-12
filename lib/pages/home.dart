@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/header.dart'; // Импорт вашего Header
 import '../widgets/search.dart';
+import '../widgets/carousel.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -78,7 +79,7 @@ class Home extends StatelessWidget {
             const SizedBox(height: 20),
             const SearchSection(),
             const SizedBox(height: 20),
-           // "Как это работает" section integrated directly
+            // "Как это работает" section integrated directly
             Container(
               padding: const EdgeInsets.all(30),
               child: Column(
@@ -142,6 +143,71 @@ class Home extends StatelessWidget {
               fit: BoxFit.cover,
               width: double.infinity,
             ),
+            Container(
+              padding: const EdgeInsets.all(30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // "Как это работает" button
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF6E9D1), // Light beige background
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Text(
+                      'ПОЧЕМУ ВЫБИРАЮТ НАС?',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFFFFA500), // Orange text
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  // Title
+                  const Text(
+                    'Мы предлагаем лучшие условия ',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 34,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  // Step 1
+                  _buildStep(
+                    icon: Icons.attach_money,
+                    title: 'Ценовая политика',
+                    subtitle: 'Подходит для любого бюджета, постоянным клиентам — скидки и бонусы.',
+                  ),
+                  const SizedBox(height: 16), // Increased padding between icons
+                  // Step 2
+                  _buildStep(
+                    icon: Icons.watch,
+                    title: 'Быстрое бронирование',
+                    subtitle: 'Бронирование банкетного зала всего за 5 минут.',
+                  ),
+                  const SizedBox(height: 30), // Increased padding between icons
+                  // Step 3
+                  _buildStep(
+                    icon: Icons.business,
+                    title: 'Свобода выбора',
+                    subtitle: 'Здесь собраны автомобили на любой вкус и бюджет от наших партнеров',
+                  ),
+                  const SizedBox(height: 30), // Increased padding between icons
+                  // Step 4
+                  _buildStep(
+                    icon: Icons.chat,
+                    title: 'Техническая поддержка',
+                    subtitle: 'Есть вопрос? Обращайтесь в службу поддержки ToiBastar c 08:00 до 20:00, если у вас возникнут проблемы.',
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20), // Spacing before the carousel
+            Carousel(),
           ],
         ),
       ),
