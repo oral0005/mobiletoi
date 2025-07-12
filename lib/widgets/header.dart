@@ -4,9 +4,11 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 390,
+Widget build(BuildContext context) {
+  return SafeArea( // <--- wrap with SafeArea
+    bottom: false, // you can disable bottom padding if it's not needed
+    child: Container(
+      width: double.infinity, // instead of fixed width
       height: 57,
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -22,62 +24,47 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
           // Logo and Text (ToiBastar)
           Positioned(
             left: 21,
-            top: 19,
+            top: 0,
+            bottom: 0,
             child: Row(
               children: [
-                // Logo
                 Image.asset(
                   'assets/ToiBastar_logo.png',
                   width: 105,
                   height: 18,
                 ),
-                const SizedBox(width: 7), // Spacing between logo and text
               ],
             ),
           ),
           // Burger Menu Button
           Positioned(
-            right: 16, // Adjusted for alignment
-            top: 13,
+            right: 16,
+            top: 0,
+            bottom: 0,
             child: Transform(
-              transform: Matrix4.diagonal3Values(-1, 1, 1), // Mirrors horizontally
+              transform: Matrix4.diagonal3Values(-1, 1, 1),
               alignment: Alignment.center,
               child: PopupMenuButton<String>(
                 icon: const Icon(
                   Icons.menu,
                   color: Colors.black,
-                  size: 20,
+                  size: 25,
                 ),
                 onSelected: (String value) {
-                  // Handle menu item selection
-                  switch (value) {
-                    case 'Home':
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Navigating to Home')),
-                      );
-                      break;
-                    case 'Settings':
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Opening Settings')),
-                      );
-                      break;
-                    case 'Logout':
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Logging out')),
-                      );
-                      break;
-                  }
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Selected: $value')),
+                  );
                 },
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                  const PopupMenuItem<String>(
+                itemBuilder: (BuildContext context) => const [
+                  PopupMenuItem<String>(
                     value: 'Home',
                     child: Text('Home'),
                   ),
-                  const PopupMenuItem<String>(
+                  PopupMenuItem<String>(
                     value: 'Settings',
                     child: Text('Settings'),
                   ),
-                  const PopupMenuItem<String>(
+                  PopupMenuItem<String>(
                     value: 'Logout',
                     child: Text('Logout'),
                   ),
@@ -87,8 +74,10 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   @override
   Size get preferredSize => const Size.fromHeight(57);
