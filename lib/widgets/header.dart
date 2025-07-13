@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobiletoi/settings.dart';
 
 class Header extends StatelessWidget implements PreferredSizeWidget {
   const Header({super.key});
@@ -21,7 +22,6 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
         ),
         child: Stack(
           children: [
-            // Logo and Text (ToiBastar)
             Positioned(
               left: 21,
               top: 0,
@@ -36,7 +36,6 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
             ),
-            // Custom Burger Icon for Sidebar
             Positioned(
               right: 21,
               top: 0,
@@ -62,17 +61,16 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(57);
 }
 
-// Drawer widget for sidebar navigation
 class Sidebar extends StatelessWidget {
   const Sidebar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.white, // Set Drawer background to white
+      backgroundColor: Colors.white,
       child: SafeArea(
         child: Container(
-          color: Colors.white, // Keep Container color white for consistency
+          color: Colors.white,
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
@@ -89,15 +87,7 @@ class Sidebar extends StatelessWidget {
                       const SnackBar(content: Text('Selected: AddOrganization')),
                     );
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFFFFA500),
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    elevation: 0,
-                  ),
+                  style: AppSettings.elevatedButtonStyle,
                   child: const Text(
                     'Добавить организацию',
                     style: TextStyle(
@@ -129,7 +119,7 @@ class Sidebar extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Selected: $value')),
         );
-        Navigator.pop(context); // Close the drawer
+        Navigator.pop(context);
       },
     );
   }

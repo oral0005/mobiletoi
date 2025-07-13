@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobiletoi/settings.dart';
 
 class ContactSection extends StatelessWidget {
   const ContactSection({super.key});
@@ -6,7 +7,7 @@ class ContactSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: const Color(0xFFFFF9ED), // Light beige background from image
+      color: const Color(0xFFFFF9ED),
       padding: const EdgeInsets.all(24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,11 +21,11 @@ class ContactSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
+          Text(
             'Адрес:',
             style: TextStyle(
               fontSize: 16,
-              color: Color(0xFF6B4E31),
+              color: AppSettings.darkBrown,
             ),
           ),
           const Text(
@@ -35,11 +36,11 @@ class ContactSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          const Text(
+          Text(
             'Время работы:',
             style: TextStyle(
               fontSize: 16,
-              color: Color(0xFF6B4E31),
+              color: AppSettings.darkBrown,
             ),
           ),
           const Text(
@@ -50,11 +51,11 @@ class ContactSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          const Text(
+          Text(
             'Телефон:',
             style: TextStyle(
               fontSize: 16,
-              color: Color(0xFF6B4E31),
+              color: AppSettings.darkBrown,
             ),
           ),
           const Text(
@@ -65,11 +66,11 @@ class ContactSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          const Text(
+          Text(
             'E-mail:',
             style: TextStyle(
               fontSize: 16,
-              color: Color(0xFF6B4E31),
+              color: AppSettings.darkBrown,
             ),
           ),
           const Text(
@@ -80,21 +81,21 @@ class ContactSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
+          Text(
             'Соц. сети:',
             style: TextStyle(
               fontSize: 16,
-              color: Color(0xFF6B4E31),
+              color: AppSettings.darkBrown,
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: const [
-              Icon(Icons.telegram, color: Color(0xFFFFA500), size: 30),
+              Icon(Icons.telegram, color: AppSettings.primaryColor, size: 30),
               SizedBox(width: 10),
-              Icon(Icons.wechat, color: Color(0xFFFFA500), size: 30),
+              Icon(Icons.wechat, color: AppSettings.primaryColor, size: 30),
               SizedBox(width: 10),
-              Icon(Icons.camera_alt, color: Color(0xFFFFA500), size: 30),
+              Icon(Icons.camera_alt, color: AppSettings.primaryColor, size: 30),
             ],
           ),
         ],

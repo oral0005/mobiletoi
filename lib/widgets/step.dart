@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobiletoi/settings.dart';
 
 class StepWidget extends StatelessWidget {
   final IconData icon;
@@ -17,17 +18,15 @@ class StepWidget extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Icon with background
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: const Color(0xFFF6E9D1), // Light beige background
+            color: AppSettings.lightBeige,
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Icon(icon, size: 40, color: const Color(0xFFFFA500)), // Orange icon
+          child: Icon(icon, size: 40, color: AppSettings.primaryColor),
         ),
         const SizedBox(width: 20),
-        // Text (title and subtitle)
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,9 +42,9 @@ class StepWidget extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 subtitle,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 14,
-                  color: Color(0xFF6B4E31), // Dark brown text
+                  color: AppSettings.darkBrown,
                 ),
               ),
             ],

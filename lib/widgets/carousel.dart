@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Carousel extends StatelessWidget {
-  final List<Map<String, String>> items = [
-    {'image': 'assets/cafe.png', 'title': 'Кафе'},
-    {'image': 'assets/restaurant.png', 'title': 'Ресторан'},
-    {'image': 'assets/toihana.png', 'title': 'Тойхана'},
-  ];
+  final List<Map<String, String>> items;
 
-  Carousel({super.key});
+  const Carousel({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +33,7 @@ class Carousel extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(right: 16),
                   child: Card(
-                    elevation: 0, // Removed shadow
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
@@ -62,7 +58,7 @@ class Carousel extends StatelessWidget {
                               item['title']!,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                fontSize: 30, // Increased font size
+                                fontSize: 30,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
                               ),

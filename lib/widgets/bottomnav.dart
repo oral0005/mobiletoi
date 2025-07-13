@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobiletoi/pages/home.dart';
-import 'package:mobiletoi/pages/catalog.dart';
 import 'package:mobiletoi/pages/add.dart';
+import 'package:mobiletoi/pages/catalog.dart';
+import 'package:mobiletoi/pages/home.dart';
+import 'package:mobiletoi/settings.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -13,7 +14,6 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
 
-  // List of pages to navigate between
   final List<Widget> _pages = [
     const HomePage(),
     const Catalog(),
@@ -46,8 +46,7 @@ class _BottomNavState extends State<BottomNav> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: const Color(0xFFFFA500),
-        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+        selectedItemColor: AppSettings.primaryColor,
         onTap: _onItemTapped,
       ),
     );
